@@ -10,17 +10,22 @@ namespace SortingApps
     {
         public static void doBubbleSort(int[] numbers)
         {
+            List<int> sortedNumbers = sort(numbers).ToList();
 
+            for (int i = 0; i < sortedNumbers.Count; i++)
+            {
+                numbers[i] = sortedNumbers[i];
+            }
         }
 
-        private static int[] sort(List<int> numbers)
+        private static int[] sort(int[] numbers)
         {
             List<int> result = new List<int>();
             bool swapped;
             do
             {
                 swapped = false;
-                swapped = CheckIfCurrentNumberIsGreaterThanNextNumber(numbers, result, swapped);
+                swapped = CheckIfCurrentNumberIsGreaterThanNextNumber(numbers.ToList(), result, swapped);
             } while (swapped == true);
 
             return result.ToArray();
